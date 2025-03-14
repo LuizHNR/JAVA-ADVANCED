@@ -4,6 +4,8 @@ import br.com.fiap.api_rest.model.Categoria;
 import jakarta.validation.constraints.*;
 import org.hibernate.validator.constraints.br.CPF;
 
+import java.util.Date;
+
 public class ClienteRequest {
     @NotBlank(message = "O nome é obrigatório")
     @Size(min = 3, max = 150,
@@ -21,17 +23,21 @@ public class ClienteRequest {
     private String cpf;
     @NotNull(message = "A categoria é obrigatória")
     private Categoria categoria;
+    private Date DatNas;
+    private boolean VIP;
 
     public ClienteRequest() {
     }
 
-    public ClienteRequest(String nome, int idade, String email, String senha, String cpf, Categoria categoria) {
+    public ClienteRequest(String nome, int idade, String email, String senha, String cpf, Categoria categoria, Date datNas, boolean VIP) {
         this.nome = nome;
         this.idade = idade;
         this.email = email;
         this.senha = senha;
         this.cpf = cpf;
         this.categoria = categoria;
+        DatNas = datNas;
+        this.VIP = VIP;
     }
 
     public String getNome() {
@@ -80,5 +86,21 @@ public class ClienteRequest {
 
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
+    }
+
+    public Date getDatNas() {
+        return DatNas;
+    }
+
+    public void setDatNas(Date datNas) {
+        DatNas = datNas;
+    }
+
+    public boolean isVIP() {
+        return VIP;
+    }
+
+    public void setVIP(boolean VIP) {
+        this.VIP = VIP;
     }
 }
