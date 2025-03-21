@@ -11,7 +11,6 @@ import org.springframework.hateoas.Link;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
@@ -28,19 +27,14 @@ public class ClienteService {
 //    ClienteRepository clienteRepository;
 
     public Cliente requestToCliente(ClienteRequest clienteRequest) {
-        return new Cliente(
-                null,
+        return new Cliente(null,
                 clienteRequest.getNome(),
                 clienteRequest.getIdade(),
-                clienteRequest.getDatNas(),
                 clienteRequest.getEmail(),
                 clienteRequest.getSenha(),
                 clienteRequest.getCpf(),
-                clienteRequest.getCategoria(),
-                clienteRequest.isVIP()
-        );
+                clienteRequest.getCategoria());
     }
-
 
     public ClienteResponse clienteToResponse(Cliente cliente, boolean self) {
         Link link;
